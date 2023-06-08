@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+  const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [isShow, setIsShow] = useState(false);
 
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log(data, user);
   };
 
   return (

@@ -30,7 +30,10 @@ const Navbar = () => {
               src={avatarImg}
               alt="avatar photo"
             />
-            <Link className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-3 py-2 text-base font-medium">
+            <Link
+              to="/login"
+              className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer px-3 py-2 text-base font-medium"
+            >
               Login
             </Link>
           </div>
@@ -42,7 +45,7 @@ const Navbar = () => {
               alt="avatar photo"
             />
 
-            <Link className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-3 py-2 text-base font-medium">
+            <Link className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer px-3 py-2 text-base font-medium">
               Logout
             </Link>
           </div>
@@ -89,7 +92,10 @@ const Navbar = () => {
                 src={avatarImg}
                 alt="avatar photo"
               />
-              <Link className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-5 py-3 text-xl font-medium">
+              <Link
+                to="/login"
+                className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-5 py-3 text-xl font-medium"
+              >
                 Login
               </Link>
             </>

@@ -22,30 +22,32 @@ const Footer = () => {
       </div>
       <div>
         <span className="footer-title">Services</span>
-        <a className="link link-hover">Login</a>
-        <a className="link link-hover">Blog</a>
-        <a className="link link-hover">Classes</a>
-        <a className="link link-hover">Instructors</a>
+        <Link className="link link-hover">Login</Link>
+        <Link className="link link-hover">Blog</Link>
+        <Link className="link link-hover">Classes</Link>
+        <Link className="link link-hover">Instructors</Link>
       </div>
       <div>
         <span className="footer-title">Company</span>
-        <a className="link link-hover">Home</a>
-        <a className="link link-hover">Classes</a>
-        <a className="link link-hover">Services</a>
-        <a className="link link-hover">Dashboard</a>
+        <Link className="link link-hover">Home</Link>
+        <Link className="link link-hover">Classes</Link>
+        <Link className="link link-hover">Services</Link>
+        <Link className="link link-hover">Dashboard</Link>
       </div>
       <div>
         <span className="footer-title">Legal</span>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
+        <Link className="link link-hover">Terms of use</Link>
+        <Link className="link link-hover">Privacy policy</Link>
+        <Link className="link link-hover">Cookie policy</Link>
       </div>
 
       <div>
         <span className="footer-title">Contact Us</span>
-        <a className="link link-hover">Phone: +880 1839 00 6867</a>
-        <a className="link link-hover">Email: contact@babystoyout.com</a>
-        <a className="link link-hover">Address: 4312, Chittagong Bangladesh</a>
+        <Link className="link link-hover">Phone: +880 1839 00 6867</Link>
+        <Link className="link link-hover">Email: contact@babystoyout.com</Link>
+        <Link className="link link-hover">
+          Address: 4312, Chittagong Bangladesh
+        </Link>
       </div>
     </footer>
   );

@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -18,6 +19,7 @@ const Register = () => {
   const [isShow, setIsShow] = useState(false);
   const [isShowAnother, setIsShowAnother] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -39,6 +41,14 @@ const Register = () => {
         updateUserProfile(data.name, data.image)
           .then(() => {
             setLoading(false);
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Registration Successful",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
           })
           .catch((error) => {
             console.log(error);
@@ -55,6 +65,14 @@ const Register = () => {
         const loggedUser = result.user;
         setLoading(false);
         console.log(loggedUser);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Registration Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

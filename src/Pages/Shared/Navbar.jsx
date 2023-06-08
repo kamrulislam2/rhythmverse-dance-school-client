@@ -71,13 +71,13 @@ const Navbar = () => {
     <Container>
       <div className="navbar">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown z-10">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <GrMenu size={40} />
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-xl uppercase font-medium"
+              className="menu  menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-xl uppercase font-medium"
             >
               {navMenu}
             </ul>
@@ -108,7 +108,7 @@ const Navbar = () => {
 
               <Link
                 onClick={handleLogout}
-                className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-5 py-3 text-xl font-medium"
+                className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer  px-5 py-3 text-xl font-medium transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
               >
                 Logout
               </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
               />
               <Link
                 to="/login"
-                className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-5 py-3 text-xl font-medium"
+                className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer  px-5 py-3 text-xl font-medium transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
               >
                 Login
               </Link>

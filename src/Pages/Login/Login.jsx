@@ -1,16 +1,18 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { loading, setLoading, googleLogin, loginUser } =
     useContext(AuthContext);
   const [isShow, setIsShow] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -21,6 +23,14 @@ const Login = () => {
         const loggedUser = result.user;
         setLoading(false);
         console.log(loggedUser);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -35,6 +45,14 @@ const Login = () => {
         const loggedUser = result.user;
         setLoading(false);
         console.log(loggedUser);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

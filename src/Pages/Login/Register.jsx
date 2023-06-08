@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
-  const [loading, setLoading] = useState(false);
+  const {
+    user,
+    loading,
+    setLoading,
+    createUser,
+    updateUserProfile,
+    googleLogin,
+  } = useContext(AuthContext);
   const [isShow, setIsShow] = useState(false);
   const [isShowAnother, setIsShowAnother] = useState(false);
   const [error, setError] = useState("");
@@ -18,12 +26,41 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    setError("");
     console.log(data);
 
     if (data.password !== data.confirm) {
       setError("Password mismatched please try again");
     }
+
+    createUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateUserProfile(data.name, data.image)
+          .then(() => {
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="flex justify-center items-center p-3 lg:p-6 min-h-screen">
       <div className="card border border-[#FDD8D6] p-12 w-5/6 lg:w-1/3">
@@ -138,7 +175,6 @@ const Register = () => {
           </label>
 
           <button
-            onClick={() => setLoading(!loading)}
             className="w-full bg-[#FDD8D6] hover:bg-[#DDDCDC] hover:border hover:border-[#FDD8D6] py-3 text-lg font-semibold rounded-full cursor-pointer"
             type="submit"
           >
@@ -156,7 +192,10 @@ const Register = () => {
           </Link>
         </p>
 
-        <div className="inline-flex items-center justify-center gap-2 w-2/3 mx-auto bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer rounded-full">
+        <div
+          onClick={handleGoogleLogin}
+          className="inline-flex items-center justify-center gap-2 w-2/3 mx-auto bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer rounded-full"
+        >
           <FcGoogle size={24} />
           <button className="text-xl font-semibold py-3">
             Continue with Google

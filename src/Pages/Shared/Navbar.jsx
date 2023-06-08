@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Container from "../../components/Container/Container";
 import { Link } from "react-router-dom";
 import { GrMenu } from "react-icons/gr";
 import avatarImg from "../../assets/avatar-login.png";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
-  const [isUser, setIsUser] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
 
   const navMenu = (
     <>
@@ -23,7 +25,19 @@ const Navbar = () => {
       </li>
 
       <div className="mt-1 p-2 lg:hidden">
-        {isUser ? (
+        {user ? (
+          <div className="flex flex-row-reverse gap-3 items-center mr-6">
+            <img
+              className="w-10 h-10 p-1 rounded-full mr-3 bg-[#DDDCDC]"
+              src={user?.photoURL}
+              alt="avatar photo"
+            />
+
+            <Link className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer px-3 py-2 text-base font-medium">
+              Logout
+            </Link>
+          </div>
+        ) : (
           <div className="flex flex-row-reverse gap-3 items-center mr-10">
             <img
               className="w-10 h-10 p-1 rounded-full mr-3 bg-[#DDDCDC]"
@@ -35,18 +49,6 @@ const Navbar = () => {
               className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer px-3 py-2 text-base font-medium"
             >
               Login
-            </Link>
-          </div>
-        ) : (
-          <div className="flex flex-row-reverse gap-3 items-center mr-6">
-            <img
-              className="w-10 h-10 p-1 rounded-full mr-3 bg-[#DDDCDC]"
-              src={avatarImg}
-              alt="avatar photo"
-            />
-
-            <Link className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer px-3 py-2 text-base font-medium">
-              Logout
             </Link>
           </div>
         )}
@@ -85,7 +87,19 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end hidden lg:flex">
-          {!isUser ? (
+          {user ? (
+            <>
+              <img
+                className="w-14 h-14 p-1 rounded-full mr-3 bg-[#DDDCDC]"
+                src={user?.photoURL}
+                alt="avatar photo"
+              />
+
+              <Link className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-5 py-3 text-xl font-medium">
+                Logout
+              </Link>
+            </>
+          ) : (
             <>
               <img
                 className="w-14 h-14 p-1 rounded-full mr-3 bg-[#DDDCDC]"
@@ -97,18 +111,6 @@ const Navbar = () => {
                 className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-5 py-3 text-xl font-medium"
               >
                 Login
-              </Link>
-            </>
-          ) : (
-            <>
-              <img
-                className="w-14 h-14 p-1 rounded-full mr-3 bg-[#DDDCDC]"
-                src={avatarImg}
-                alt="avatar photo"
-              />
-
-              <Link className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-5 py-3 text-xl font-medium">
-                Logout
               </Link>
             </>
           )}

@@ -7,14 +7,38 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
-  const { user } = useContext(AuthContext);
-  const [loading, setLoading] = useState(false);
+  const { loading, setLoading, googleLogin, loginUser } =
+    useContext(AuthContext);
   const [isShow, setIsShow] = useState(false);
+  const [error, setError] = useState("");
 
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data, user);
+    setError("");
+    loginUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        setLoading(false);
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+        setLoading(false);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const loggedUser = result.user;
+        setLoading(false);
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -56,8 +80,8 @@ const Login = () => {
               />
             )}
           </label>
+          {error && <p className="text-red-600">{error}*</p>}
           <button
-            onClick={() => setLoading(!loading)}
             className="w-full bg-[#FDD8D6] hover:bg-[#DDDCDC] hover:border hover:border-[#FDD8D6] py-3 text-lg font-semibold rounded-full cursor-pointer"
             type="submit"
           >
@@ -74,7 +98,10 @@ const Login = () => {
             Register
           </Link>
         </p>
-        <div className="inline-flex items-center justify-center gap-2 w-2/3 mx-auto bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer rounded-full">
+        <div
+          onClick={handleGoogleLogin}
+          className="inline-flex items-center justify-center gap-2 w-2/3 mx-auto bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer rounded-full"
+        >
           <FcGoogle size={24} />
           <button className="text-xl font-semibold py-3">
             Continue with Google

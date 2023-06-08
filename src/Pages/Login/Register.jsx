@@ -27,7 +27,6 @@ const Register = () => {
 
   const onSubmit = (data) => {
     setError("");
-    console.log(data);
 
     if (data.password !== data.confirm) {
       setError("Password mismatched please try again");
@@ -54,6 +53,7 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         const loggedUser = result.user;
+        setLoading(false);
         console.log(loggedUser);
       })
       .catch((error) => {

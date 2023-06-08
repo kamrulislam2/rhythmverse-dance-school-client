@@ -9,6 +9,14 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   console.log(user);
 
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const navMenu = (
     <>
       <li>
@@ -33,7 +41,10 @@ const Navbar = () => {
               alt="avatar photo"
             />
 
-            <Link className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer px-3 py-2 text-base font-medium">
+            <Link
+              onClick={handleLogout}
+              className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer px-3 py-2 text-base font-medium"
+            >
               Logout
             </Link>
           </div>
@@ -95,7 +106,10 @@ const Navbar = () => {
                 alt="avatar photo"
               />
 
-              <Link className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-5 py-3 text-xl font-medium">
+              <Link
+                onClick={handleLogout}
+                className="bg-[#FDD8D6] hover:bg-[#DDDCDC] cursor-pointer transition-transform px-5 py-3 text-xl font-medium"
+              >
                 Logout
               </Link>
             </>

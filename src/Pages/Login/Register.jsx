@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
+  const [isShow, setIsShow] = useState(false);
+  const [isShowAnother, setIsShowAnother] = useState(false);
+  const [error, setError] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+
+    if (data.password !== data.confirm) {
+      setError("Password mismatched please try again");
+    }
+  };
   return (
     <div className="flex justify-center items-center p-3 lg:p-6 min-h-screen">
       <div className="card border border-[#FDD8D6] p-12 w-5/6 lg:w-1/3">
@@ -60,7 +72,7 @@ const Register = () => {
             Password*
             <input
               className="border-2 border-[#FDD8D6]  rounded-full p-3"
-              type="password"
+              type={isShow ? "text" : "password"}
               name="password"
               {...register("password", {
                 required: true,
@@ -70,7 +82,17 @@ const Register = () => {
               })}
               placeholder="password"
             />
-            <FaEye className="absolute top-14 right-6 cursor-pointer" />
+            {isShow ? (
+              <FaEyeSlash
+                onClick={() => setIsShow(false)}
+                className="absolute top-14 right-6 cursor-pointer"
+              />
+            ) : (
+              <FaEye
+                onClick={() => setIsShow(true)}
+                className="absolute top-14 right-6 cursor-pointer"
+              />
+            )}
             {errors.password?.type === "required" && (
               <p className="text-red-600">Password is required*</p>
             )}
@@ -93,22 +115,39 @@ const Register = () => {
             Confirm Password*
             <input
               className="border-2 border-[#FDD8D6]  rounded-full p-3"
-              type="password"
+              type={isShowAnother ? "text" : "password"}
               name="confirm"
               {...register("confirm", { required: true })}
               placeholder="confirm password"
             />
-            <FaEye className="absolute top-14 right-6 cursor-pointer" />
+            {isShowAnother ? (
+              <FaEyeSlash
+                onClick={() => setIsShowAnother(false)}
+                className="absolute top-14 right-6 cursor-pointer"
+              />
+            ) : (
+              <FaEye
+                onClick={() => setIsShowAnother(true)}
+                className="absolute top-14 right-6 cursor-pointer"
+              />
+            )}
             {errors.confirm && (
               <p className="text-red-600">Confirm password is required*</p>
             )}
+            {error && <p className="text-red-600">{error}*</p>}
           </label>
 
-          <input
+          <button
+            onClick={() => setLoading(!loading)}
             className="w-full bg-[#FDD8D6] hover:bg-[#DDDCDC] hover:border hover:border-[#FDD8D6] py-3 text-lg font-semibold rounded-full cursor-pointer"
             type="submit"
-            value="Login"
-          />
+          >
+            {loading ? (
+              <TbFidgetSpinner className="m-auto animate-spin" size={24} />
+            ) : (
+              "Register"
+            )}
+          </button>
         </form>
         <p className="my-6">
           Already registered? Please{" "}

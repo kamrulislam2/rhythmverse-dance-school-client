@@ -3,6 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import Container from "../../components/Container/Container";
 
 const Sidebar = () => {
+  const isAdmin = true;
+  const isInstructor = true;
+  const isStudent = true;
+
   return (
     <div className="drawer-side">
       <label className="drawer-overlay"></label>

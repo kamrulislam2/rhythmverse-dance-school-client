@@ -7,7 +7,6 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 
 const Register = () => {
   const {

@@ -27,14 +27,17 @@ const Navbar = () => {
       <li title="Classes">
         <Link to="/classes">Classes</Link>
       </li>
-      <li title="Dashboard">
-        <Link to="/dashboard">Dashboard</Link>
-      </li>
+      {user && (
+        <li title="Dashboard">
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
 
       <div className="mt-1 p-2 lg:hidden">
         {user ? (
           <div className="flex flex-row-reverse gap-3 items-center mr-6">
             <img
+              referrerPolicy="no-referrer"
               title={user?.displayName}
               className="w-10 h-10 p-1 rounded-full mr-3 cursor-pointer bg-[#DDDCDC]"
               src={user?.photoURL}
@@ -106,6 +109,7 @@ const Navbar = () => {
             {user ? (
               <>
                 <img
+                  referrerPolicy="no-referrer"
                   title={user?.displayName}
                   className="w-14 h-14 p-1 rounded-full mr-3 bg-[#DDDCDC] cursor-pointer"
                   src={user?.photoURL}

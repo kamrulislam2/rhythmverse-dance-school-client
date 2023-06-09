@@ -6,6 +6,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const Register = () => {
   const {
@@ -40,15 +42,28 @@ const Register = () => {
         console.log(loggedUser);
         updateUserProfile(data.name, data.image)
           .then(() => {
-            setLoading(false);
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Registration Successful",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            navigate("/");
+            const saveUser = {
+              name: data.name,
+              email: data.email,
+            };
+            axios
+              .put(`${import.meta.env.VITE_api_URL}/users`, saveUser)
+              .then((data) => {
+                if (
+                  data.data.modifiedCount > 0 ||
+                  data.data.upsertedCount > 0
+                ) {
+                  setLoading(false);
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Registration Successful",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate("/");
+                }
+              });
           })
           .catch((error) => {
             console.log(error);
@@ -63,16 +78,25 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         const loggedUser = result.user;
-        setLoading(false);
-        console.log(loggedUser);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Registration Successful",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate("/");
+        const saveUser = {
+          name: loggedUser?.displayName,
+          email: loggedUser?.email,
+        };
+        axios
+          .put(`${import.meta.env.VITE_api_URL}/users`, saveUser)
+          .then((data) => {
+            if (data.data.modifiedCount > 0 || data.data.upsertedCount > 0) {
+              setLoading(false);
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Registration Successful",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
+          });
       })
       .catch((error) => {
         console.log(error);

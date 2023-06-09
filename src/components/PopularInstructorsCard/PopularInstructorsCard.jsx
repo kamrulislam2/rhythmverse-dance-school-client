@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PopularInstructorsCard = ({ instructor }) => {
-  console.log(instructor);
   const { seats, students, price } = instructor;
   const { name, image } = instructor.instructor;
   return (

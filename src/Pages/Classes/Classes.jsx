@@ -14,7 +14,7 @@ const Classes = () => {
       return res.data;
     },
   });
-  console.log(classes);
+
   return (
     <div className="pt-24">
       <Container>

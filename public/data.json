@@ -1,0 +1,167 @@
+[
+    {
+        "title": "Ballet Dance",
+        "image": "https://i.ibb.co/kyCZfLr/ballet-dance.jpg",
+        "details": "Ballet is a classical dance form characterized by precise and graceful movements, pointe work (for female dancers), and a strong emphasis on technique, posture, and musicality.",
+        "seats": 30,
+        "students":28,
+        "price": 450,
+        "instructor": {
+            "name": "Henry Danton",
+            "image": "https://i.ibb.co/dGPH3QH/Henry-Danton.webp",
+            "email": "henrydanton@gmail.com"
+        },
+        "status": "Approved"
+
+    },
+    {
+        "title": "Jazz Dance",
+        "image": "https://i.ibb.co/dkXgX2s/jaaz-dance.jpg",
+        "details": "Jazz dance incorporates elements of ballet, modern dance, and popular dance styles. It is characterized by energetic movements, syncopated rhythms, isolations, and often incorporates elements of improvisation.",
+        "seats": 28,
+        "students":24,
+        "price": 370,
+        "instructor": {
+            "name": "Graciela Daniele",
+            "image": "https://i.ibb.co/61G4hQv/Graciela-Daniele.webp",
+            "email": "gracieladaniele@gmail.com"
+        },
+        "status": "Approved"
+
+    },
+    {
+        "title": "Contemporary Dance",
+        "image": "https://i.ibb.co/MM46sW5/Contemporary-dance.jpg",
+        "details": "Contemporary or modern dance is a fluid and expressive dance form that explores unique movement qualities and often incorporates elements of ballet and other dance styles. It emphasizes creativity, individuality, and the use of space and dynamics.",
+        "seats": 45,
+        "students":37,
+        "price": 470,
+        "instructor": {
+            "name": "Martha Graham",
+            "image": "https://i.ibb.co/KbCZ5My/Martha-Graham.jpg",
+            "email": "marthagraham@gmail.com"
+        },
+        "status": "Approved"
+
+    },
+    {
+        "title": "Hip-Hop Dance",
+        "image": "https://i.ibb.co/P50T4yv/hip-hop-dance.jpg",
+        "details": "Hip-hop dance originated in African American and Latinx communities and is characterized by its high-energy, urban style. It includes a wide range of movements, including popping, locking, breaking, and freestyle, often performed to hip-hop music.",
+        "seats": 55,
+        "students":42,
+        "price": 290,
+        "instructor": {
+            "name": "MC Hammer",
+            "image": "https://i.ibb.co/tJMMJcs/MC-Hammer.webp",
+            "email": "mchammer@gmail.com"
+        },
+        "status": "Approved"
+
+    },
+    {
+        "title": "Tap Dance",
+        "image": "https://i.ibb.co/Y7gWWBH/tap-dance.jpg",
+        "details": "Tap dance involves creating rhythmic sounds through the use of metal plates attached to the dancer's shoes. It focuses on intricate footwork, timing, and musicality.",
+        "seats": 35,
+        "students":32,
+        "price": 280,
+        "instructor": {
+            "name": "Savion Glover",
+            "image": "https://i.ibb.co/sjYRZBQ/Savion-Glover.webp",
+            "email": "savionglover@gmail.com"
+        },
+        "status": "Approved"
+
+    },
+    {
+        "title": "Latin Dance",
+        "image": "https://i.ibb.co/0tgTsYh/latin-dance.jpg",
+        "details": "Latin dance styles include salsa, bachata, merengue, cha-cha-cha, and samba, among others. These dances are characterized by vibrant movements, rhythmic hip action, and partner connection.",
+        "seats": 33,
+        "students":26,
+        "price": 289,
+        "instructor": {
+            "name": "Albert Torres",
+            "image": "https://i.ibb.co/mt52VCs/Albert-Torres.jpg",
+            "email": "alberttorres@gmail.com"
+        },
+        "status": "Approved"
+
+    },
+    {
+        "title": "Ballroom Dance",
+        "image": "https://i.ibb.co/XVmp4L2/ballroom-dance.jpg",
+        "details": "Ballroom dance includes various partner dances such as waltz, foxtrot, tango, rumba, and swing. It emphasizes precise footwork, posture, and partner communication.",
+        "seats": 39,
+        "students":32,
+        "price": 345,
+        "instructor": {
+            "name": "Arthur Murray",
+            "image": "https://i.ibb.co/wdr7dq5/arthur-murray.webp",
+            "email": "arthurmurray@gmail.com"
+        },
+        "status": "Approved"
+
+    },
+    {
+        "title": "Contemporary Fusion Dance",
+        "image": "https://i.ibb.co/yFRGgqD/Contemporary-Fusion-dance.jpg",
+        "details": " Contemporary fusion combines elements of different dance styles, often blending modern, ballet, jazz, and other forms to create a unique and expressive movement vocabulary.",
+        "seats": 49,
+        "students":42,
+        "price": 399,
+        "instructor": {
+            "name": "Akram Khan",
+            "image": "https://i.ibb.co/rM3pFYy/akram-khan.jpg",
+            "email": "akramkhan@gmail.com"
+        },
+        "status": "Approved"
+
+    },
+    {
+        "title": "Folk and Cultural Dances",
+        "image": "https://i.ibb.co/58YmxBY/folk-culture-dance-2.jpg",
+        "details": "Dance learning schools may also offer classes in traditional folk or cultural dances from different regions and countries, allowing students to explore diverse dance traditions.",
+        "seats": 69,
+        "students": 65,
+        "price": 299,
+        "instructor": {
+            "name": "Mansiya V. P.",
+            "image": "https://i.ibb.co/GpN0Lwx/mansiya-vp.gif",
+            "email": "mansiyavp@gmail.com"
+        },
+        "status": "Approved"
+
+    },
+    {
+        "title": "Musical Theater Dance",
+        "image": "https://i.ibb.co/BPcfX9y/Musical-Theater-Dance.jpg",
+        "details": "Musical theater dance combines elements of various dance styles, incorporating storytelling, character development, and performance techniques specific to theatrical productions.",
+        "seats": 49,
+        "students": 47,
+        "price": 320,
+        "instructor": {
+            "name": "Joan Bayley",
+            "image": "https://i.ibb.co/XWDTkYk/Joan-Bayley.jpg",
+            "email": "joanbayley@gmail.com"
+        },
+        "status": "Approved"
+
+    },
+    {
+        "title": "Street Dance/Urban Styles",
+        "image": "https://i.ibb.co/yShZdwF/Street-Dance.jpg",
+        "details": "Street dance styles include breaking, popping, locking, krumping, waacking, and more. These styles originated in urban communities and often incorporate freestyle and improvisation.",
+        "seats": 59,
+        "students": 58,
+        "price": 310,
+        "instructor": {
+            "name": "Les Twins",
+            "image": "https://i.ibb.co/M5K7jrf/les-twins.webp",
+            "email": "lestwins@gmail.com"
+        },
+        "status": "Approved"
+
+    }
+]

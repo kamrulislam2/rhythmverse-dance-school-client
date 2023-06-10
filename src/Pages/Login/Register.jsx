@@ -68,10 +68,12 @@ const Register = () => {
               });
           })
           .catch((error) => {
+            setLoading(false);
             console.log(error);
           });
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
       });
   };
@@ -106,6 +108,7 @@ const Register = () => {
         });
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
       });
   };

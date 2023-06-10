@@ -23,7 +23,6 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         setLoading(false);
-        console.log(loggedUser);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -55,6 +54,7 @@ const Login = () => {
         navigate(location.state?.from?.pathname || "/", { replace: true });
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
       });
   };

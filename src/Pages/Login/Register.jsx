@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -21,6 +21,7 @@ const Register = () => {
   const [isShowAnother, setIsShowAnother] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -60,8 +61,10 @@ const Register = () => {
                     showConfirmButton: false,
                     timer: 1500,
                   });
-                  navigate("/");
                 }
+                navigate(location.state?.from?.pathname || "/", {
+                  replace: true,
+                });
               });
           })
           .catch((error) => {
@@ -93,9 +96,11 @@ const Register = () => {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              navigate("/");
             }
           });
+        navigate(location.state?.from?.pathname || "/", {
+          replace: true,
+        });
       })
       .catch((error) => {
         console.log(error);

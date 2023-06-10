@@ -10,6 +10,7 @@ import Dashboard from "../Pages/Shared/Dashboard";
 import MySelectedClass from "../Pages/Student/MySelectedClass";
 import MyEnrolledClass from "../Pages/Student/MyEnrolledClass";
 import PaymentHistory from "../Pages/Student/PaymentHistory";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,11 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "mySelectedClass",

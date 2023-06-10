@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -13,6 +13,7 @@ const Login = () => {
   const [isShow, setIsShow] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -30,7 +31,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+        navigate(location.state?.from?.pathname || "/", { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -44,7 +45,6 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         setLoading(false);
-        console.log(loggedUser);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -52,7 +52,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+        navigate(location.state?.from?.pathname || "/", { replace: true });
       })
       .catch((error) => {
         console.log(error);

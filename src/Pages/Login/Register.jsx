@@ -39,12 +39,12 @@ const Register = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         updateUserProfile(data.name, data.image)
           .then(() => {
             const saveUser = {
               name: data.name,
               email: data.email,
+              image: data.image,
             };
             axios
               .put(`${import.meta.env.VITE_api_URL}/users`, saveUser)
@@ -83,10 +83,13 @@ const Register = () => {
         const saveUser = {
           name: loggedUser?.displayName,
           email: loggedUser?.email,
+          image: loggedUser?.photoURL,
         };
+        console.log(saveUser);
         axios
           .put(`${import.meta.env.VITE_api_URL}/users`, saveUser)
           .then((data) => {
+            console.log(data.data);
             if (data.data.modifiedCount > 0 || data.data.upsertedCount > 0) {
               setLoading(false);
               Swal.fire({

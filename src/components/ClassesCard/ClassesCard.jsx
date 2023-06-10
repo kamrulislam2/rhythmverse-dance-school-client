@@ -1,11 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const ClassesCard = ({ singleClass }) => {
-  const { title, image, instructor, seats, students, price } = singleClass;
+  const { user } = useContext(AuthContext);
+  const { _id, title, image, instructor, seats, students, price } = singleClass;
 
   const handleSelect = () => {
-    console.log("clicked");
+    const selectedClass = {
+      classId: _id,
+      instructor: instructor.name,
+      name: title,
+      image,
+      price,
+      email: user?.email,
+    };
+    axios
+      .put(`${import.meta.env.VITE_api_URL}/selected`, selectedClass)
+      .then((data) => {
+        if (data.data.upsertedId && data.data.upsertedCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Class selected",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "Already selected",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (

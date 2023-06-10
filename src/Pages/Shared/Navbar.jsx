@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 import { GrMenu } from "react-icons/gr";
 import avatarImg from "../../assets/avatar-login.png";
 import { AuthContext } from "../../provider/AuthProvider";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   const handleLogout = () => {
     logOut()
@@ -29,7 +33,17 @@ const Navbar = () => {
       </li>
       {user && (
         <li title="Dashboard">
-          <Link to="/dashboard">Dashboard</Link>
+          <Link
+            to={
+              isAdmin
+                ? "/dashboard/manageClasses"
+                : isInstructor
+                ? "/dashboard/myClasses"
+                : "/dashboard/mySelectedClass"
+            }
+          >
+            Dashboard
+          </Link>
         </li>
       )}
 

@@ -6,11 +6,9 @@ import InstructorsCard from "../../components/InstructorsCard/InstructorsCard";
 
 const Instructors = () => {
   const { data: classes = [] } = useQuery({
-    queryKey: ["popular-classes"],
+    queryKey: ["classes"],
     queryFn: async () => {
-      const res = await axios.get(
-        `${import.meta.env.VITE_api_URL}/popular-classes`
-      );
+      const res = await axios.get(`${import.meta.env.VITE_api_URL}/classes`);
       return res.data;
     },
   });

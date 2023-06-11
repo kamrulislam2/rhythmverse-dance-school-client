@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MySelectedClassCard = ({ singleClass, index, refetch }) => {
-  const { name, image, email } = singleClass;
+  const { name, image, email, price } = singleClass;
 
   const handleDelete = (singleClass) => {
     axios
@@ -38,6 +38,7 @@ const MySelectedClassCard = ({ singleClass, index, refetch }) => {
       </td>
       <td>{name}</td>
       <td>{email}</td>
+      <td>${price}</td>
       <td>
         <button
           onClick={() => handleDelete(singleClass)}
@@ -47,7 +48,7 @@ const MySelectedClassCard = ({ singleClass, index, refetch }) => {
         </button>
       </td>
       <td>
-        <Link singleClass={singleClass} to="/dashboard/payment">
+        <Link to={`/dashboard/payment/${singleClass._id}`}>
           <button className="hover:scale-110 transition transform hover:underline">
             Pay
           </button>

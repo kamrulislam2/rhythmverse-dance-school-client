@@ -7,10 +7,10 @@ import PopularInstructors from "./PopularInstructors";
 
 const Home = () => {
   const { data: classes = [] } = useQuery({
-    queryKey: ["popular-classes"],
+    queryKey: ["classes"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_api_URL}/popular-classes?limit=${6}`
+        `${import.meta.env.VITE_api_URL}/classes?limit=${6}`
       );
       return res.data;
     },

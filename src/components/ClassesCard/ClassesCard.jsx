@@ -17,9 +17,10 @@ const ClassesCard = ({ singleClass }) => {
       email: user?.email,
     };
     axios
-      .put(`${import.meta.env.VITE_api_URL}/selected`, selectedClass)
+      .post(`${import.meta.env.VITE_api_URL}/selected`, selectedClass)
       .then((data) => {
-        if (data.data.upsertedId && data.data.upsertedCount > 0) {
+        console.log(data.data);
+        if (data.data.insertedId) {
           Swal.fire({
             position: "top-end",
             icon: "success",

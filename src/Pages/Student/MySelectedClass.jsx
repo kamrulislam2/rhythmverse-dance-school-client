@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import MySelectedClassCard from "../../components/MySelectedClassCard/MySelectedClassCard";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const MySelectedClass = () => {
   const [axiosSecure] = useAxiosSecure();
-
+  const { user } = useContext(AuthContext);
   const { data: selectedClass = [], refetch } = useQuery({
-    queryKey: ["selected"],
+    queryKey: ["selected", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get("/selected");
+      const res = await axiosSecure.get(`/selected?email=${user?.email}`);
       return res.data;
     },
   });
@@ -27,6 +28,7 @@ const MySelectedClass = () => {
               <th>Image</th>
               <th>Name</th>
               <th>Course Email</th>
+              <th>Price</th>
               <th>Action</th>
               <th>Action</th>
             </tr>

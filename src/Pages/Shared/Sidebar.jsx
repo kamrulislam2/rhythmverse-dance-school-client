@@ -48,27 +48,27 @@ const Sidebar = () => {
             </>
           ) : isInstructor ? (
             <>
-              <h3 className="text-2xl font-bold mb-10">Instructor's Panel</h3>
+              <h3 className="text-2xl font-bold mb-10">Instructor Panel</h3>
 
               <NavLink
-                to="/dashboard/mySelectedClass"
+                to="/dashboard/addClass"
                 className={({ isActive }) => (isActive ? "text-gray-500" : "")}
               >
-                <h3 className="text-xl font-semibold hover:scale-105 transition transform mb-4 hover:underline">
-                  Add a Class
+                <h3 className="text-xl font-semibold hover:scale-105 transition transform mb-4 hover:underline inline-flex items-center gap-2">
+                  <FaBookMedical /> Add a Class
                 </h3>
               </NavLink>
               <NavLink
-                to="/dashboard/myEnrolledClass"
+                to="/dashboard/myClasses"
                 className={({ isActive }) => (isActive ? "text-gray-500" : "")}
               >
-                <h3 className="text-xl font-semibold hover:scale-105 transition transform mb-4 hover:underline">
-                  My Classes
+                <h3 className="text-xl font-semibold hover:scale-105 transition transform mb-4 hover:underline inline-flex items-center gap-2">
+                  <FaBook /> My Classes
                 </h3>
               </NavLink>
               <Link
                 to="/"
-                className="text-lg font-semibold inline-flex gap-2 items-center px-3 py-2 bg-transparent border border-black transition transform hover:scale-105 absolute bottom-16"
+                className="text-lg font-semibold inline-flex gap-2 items-center px-3 py-2 bg-transparent border border-black transition transform hover:scale-105 absolute left-12 bottom-16"
               >
                 <TiArrowBackOutline />
                 Back

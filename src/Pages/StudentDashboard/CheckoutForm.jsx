@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import "./Common.css";
 import { useNavigate } from "react-router-dom";
 import moment from "moment/moment";
 
@@ -119,8 +118,7 @@ const CheckoutForm = ({ selectedClass, price }) => {
         />
         <div className="w-1/12 mx-auto ">
           <button
-            id="paymentBtn"
-            className="btn btn-primary w-full"
+            className="px-4 py-2 bg-[#FDD8D6] hover:bg-[#DDDCDC]  cursor-pointer text-base lg:text-lg font-medium uppercase transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none inline-flex items-center gap-3"
             type="submit"
             disabled={!stripe || !clientSecret | paymentLoading}
           >

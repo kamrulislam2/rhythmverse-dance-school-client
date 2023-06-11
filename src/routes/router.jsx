@@ -7,11 +7,14 @@ import Register from "../Pages/Login/Register";
 import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import Dashboard from "../Pages/Shared/Dashboard";
-import MySelectedClass from "../Pages/Student/MySelectedClass";
-import MyEnrolledClass from "../Pages/Student/MyEnrolledClass";
-import PaymentHistory from "../Pages/Student/PaymentHistory";
+import MySelectedClass from "../Pages/StudentDashboard/MySelectedClass";
+import MyEnrolledClass from "../Pages/StudentDashboard/MyEnrolledClass";
+import PaymentHistory from "../Pages/StudentDashboard/PaymentHistory";
 import PrivateRoute from "./PrivateRoute";
-import Payment from "../Pages/Student/Payment";
+import Payment from "../Pages/StudentDashboard/Payment";
+import AddClass from "../Pages/InstructorDashboard/AddClass";
+import MyClasses from "../Pages/InstructorDashboard/MyClasses";
+import UpdateMyClasses from "../components/MyClassesCard/UpdateMyClasses";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +67,18 @@ const router = createBrowserRouter([
       {
         path: "paymentHistory",
         element: <PaymentHistory />,
+      },
+      {
+        path: "addClass",
+        element: <AddClass />,
+      },
+      {
+        path: "myClasses",
+        element: <MyClasses />,
+      },
+      {
+        path: "updateClass/:id",
+        element: <UpdateMyClasses />,
       },
     ],
   },

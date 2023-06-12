@@ -1,20 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "../../components/Container/Container";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const TopInstructor = ({ classes }) => {
   if (!classes || !classes[0] || !classes[0].instructor) {
     return null;
   }
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const { details, students } = classes[0];
   const { image, name } = classes[0]?.instructor;
   return (
     <Container>
       {classes[0] && classes[0].instructor && (
-        <div className="py-16">
+        <div data-aos="zoom-in-up" data-aos-duration="3000" className="py-16">
           <h2 className="text-4xl font-bold uppercase text-center mb-16">
             Top Instructor Of The Year
           </h2>

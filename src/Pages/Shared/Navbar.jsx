@@ -8,7 +8,7 @@ import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, setDark, dark } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
 
@@ -88,8 +88,20 @@ const Navbar = () => {
   );
 
   return (
-    <div className="fixed w-full bg-white z-10 shadow-sm pb-3">
+    <div
+      data-theme={dark ? "dark" : "light"}
+      className="fixed w-full bg-white z-10 shadow-sm pb-3"
+    >
       <Container>
+        <label className="absolute right-4 lg:right-12 top-8 lg:top-3 inline-flex items-center gap-2">
+          <span className="font-bold">Use {dark ? "Light" : "Dark"} Theme</span>
+          <input
+            onChange={() => setDark(!dark)}
+            type="checkbox"
+            className="toggle"
+          />
+        </label>
+
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown z-10">

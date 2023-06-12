@@ -22,7 +22,7 @@ const Sidebar = () => {
               <h3 className="text-2xl font-bold mb-10">Admin Panel</h3>
 
               <NavLink
-                to="/dashboard/mySelectedClass"
+                to="/dashboard/manageClasses"
                 className={({ isActive }) => (isActive ? "text-gray-500" : "")}
               >
                 <h3 className="text-xl font-semibold hover:scale-105 transition transform mb-4 hover:underline">
@@ -30,7 +30,7 @@ const Sidebar = () => {
                 </h3>
               </NavLink>
               <NavLink
-                to="/dashboard/myEnrolledClass"
+                to="/dashboard/manageUsers"
                 className={({ isActive }) => (isActive ? "text-gray-500" : "")}
               >
                 <h3 className="text-xl font-semibold hover:scale-105 transition transform mb-4 hover:underline">

@@ -7,7 +7,12 @@ const InstructorsCard = ({ instructor }) => {
   return (
     <div className="w-full bg-base-100 shadow-xl ">
       <figure>
-        <img className="h-80 w-full" src={image} alt="Shoes" />
+        <img
+          referrerPolicy="no-referrer"
+          className="h-80 w-full"
+          src={image}
+          alt="Shoes"
+        />
       </figure>
       <div className="card-body ">
         <h2 className="card-title text-2xl font-bold">{name}</h2>

@@ -15,6 +15,8 @@ import Payment from "../Pages/StudentDashboard/Payment";
 import AddClass from "../Pages/InstructorDashboard/AddClass";
 import MyClasses from "../Pages/InstructorDashboard/MyClasses";
 import UpdateMyClasses from "../components/MyClassesCard/UpdateMyClasses";
+import ManageClasses from "../Pages/AdminDashboard/ManageClasses";
+import ManageUsers from "../Pages/AdminDashboard/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +81,14 @@ const router = createBrowserRouter([
       {
         path: "updateClass/:id",
         element: <UpdateMyClasses />,
+      },
+      {
+        path: "manageClasses",
+        element: <ManageClasses />,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers />,
       },
     ],
   },

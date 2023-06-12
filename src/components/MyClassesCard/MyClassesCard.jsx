@@ -5,8 +5,18 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const MyClassesCard = ({ classes, refetch }) => {
-  const { title, details, image, price, seats, students, status, _id } =
-    classes;
+  const {
+    title,
+    details,
+    image,
+    price,
+    seats,
+    students,
+    status,
+    _id,
+    feedback,
+  } = classes;
+  console.log(classes);
   const [axiosSecure] = useAxiosSecure();
 
   const handleDelete = (id) => {
@@ -39,10 +49,9 @@ const MyClassesCard = ({ classes, refetch }) => {
         <p className="text-lg">
           <span className="font-bold">Total Seat:</span> {seats}
         </p>
-        {status === "Denied" && (
+        {(status === "Denied" || status === "Approved") && feedback && (
           <p className="text- text-gray-500">
-            [<span className="font-bold">Feedback:</span> Urban dance styles
-            include breaking, popping, locking, krumping, waacking, and more.]
+            [<span className="font-bold">Feedback:</span> {feedback}]
           </p>
         )}
       </div>
@@ -59,11 +68,15 @@ const MyClassesCard = ({ classes, refetch }) => {
       <div className="badge bg-[#FDD8D6] mr-2 mt-2 text-base p-3">{status}</div>
       <Link
         to={`/dashboard/updateClass/${_id}`}
-        className="card-actions absolute bottom-8 right-6 items-end justify-end"
+        className={`card-actions absolute bottom-8 right-6 items-end justify-end ${
+          status === "Denied" ? "btn-disabled" : ""
+        }`}
       >
         <label
           htmlFor="modal"
-          className="btn btn-sm inline-flex items-center gap-2 bg-[#FDD8D6]"
+          className={`btn btn-sm inline-flex items-center gap-2 bg-[#FDD8D6] ${
+            status === "Denied" ? "btn-disabled" : ""
+          }`}
         >
           <FaEdit />
           Edit

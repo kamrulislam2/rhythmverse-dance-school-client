@@ -7,11 +7,13 @@ import PopularInstructors from "./PopularInstructors";
 import TopInstructor from "./TopInstructor";
 import RecentNews from "./RecentNews";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
-  const { dark } = useContext(AuthContext);
+  const { dark, user, loading } = useContext(AuthContext);
   const { data: classes = [] } = useQuery({
     queryKey: ["classes"],
+    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axios.get(
         `${import.meta.env.VITE_api_URL}/classes?limit=${6}`
@@ -20,8 +22,14 @@ const Home = () => {
     },
   });
 
+  console.log(classes);
+
   return (
     <div data-theme={dark ? "dark" : "light"} className="pt-24">
+      <Helmet>
+        <title>RhythmVerse | Home</title>
+      </Helmet>
+
       <Banner></Banner>
       <PopularClasses classes={classes} />
       <PopularInstructors classes={classes} />

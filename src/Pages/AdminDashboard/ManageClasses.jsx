@@ -6,10 +6,11 @@ import ManageClassesCard from "../../components/ManageClassesCard/ManageClassesC
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
 
   const { data: myClasses = [], refetch } = useQuery({
     queryKey: ["manageClasses", user?.email],
+    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const response1 = axiosSecure.get("/manageClasses");
       const response2 = axiosSecure.get("/updatedClasses");

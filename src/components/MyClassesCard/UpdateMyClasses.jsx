@@ -10,7 +10,7 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import Swal from "sweetalert2";
 
 const UpdateMyClasses = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const { id } = useParams();
   const { register, handleSubmit, reset } = useForm();
   const [axiosSecure] = useAxiosSecure();
@@ -18,6 +18,7 @@ const UpdateMyClasses = () => {
 
   const { data: myClasses = [], isLoading } = useQuery({
     queryKey: ["classes", user?.email],
+    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/myClasses?email=${user?.email}`);
       return res.data.filter((data) => data._id === id);

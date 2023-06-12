@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "../../components/Container/Container";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import InstructorsCard from "../../components/InstructorsCard/InstructorsCard";
+import { AuthContext } from "../../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Instructors = () => {
+  const { user, loading } = useContext(AuthContext);
   const { data: classes = [] } = useQuery({
     queryKey: ["classes"],
+    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axios.get(`${import.meta.env.VITE_api_URL}/classes`);
       return res.data;
@@ -16,6 +20,9 @@ const Instructors = () => {
   return (
     <div className="pt-24">
       <Container>
+        <Helmet>
+          <title>RhythmVerse | Instructor</title>
+        </Helmet>
         <div className="py-16">
           <h2 className="text-4xl font-bold uppercase text-center mb-16">
             All Instructors

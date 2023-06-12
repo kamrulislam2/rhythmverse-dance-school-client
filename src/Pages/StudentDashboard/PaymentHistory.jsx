@@ -6,10 +6,11 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const PaymentHistory = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
 
   const { data: paymentInfo = [] } = useQuery({
     queryKey: ["paymentInfo", user?.email],
+    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/payment?email=${user?.email}`);
       return res.data;

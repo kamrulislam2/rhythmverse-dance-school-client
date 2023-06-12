@@ -6,9 +6,10 @@ import { useQuery } from "@tanstack/react-query";
 
 const ManageUsers = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUsers"],
+    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axiosSecure.get("users");
       return res.data;

@@ -16,7 +16,7 @@ const MyClassesCard = ({ classes, refetch }) => {
     _id,
     feedback,
   } = classes;
-  console.log(classes);
+
   const [axiosSecure] = useAxiosSecure();
 
   const handleDelete = (id) => {
@@ -82,7 +82,6 @@ const MyClassesCard = ({ classes, refetch }) => {
           Edit
         </label>
       </Link>
-      {/* <MyClassesModal classes={classes} refetch={refetch} editData={editData} /> */}
     </div>
   );
 };

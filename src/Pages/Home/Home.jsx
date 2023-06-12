@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import PopularClasses from "./PopularClasses";
 import PopularInstructors from "./PopularInstructors";
+import TopInstructor from "./TopInstructor";
 
 const Home = () => {
   const { data: classes = [] } = useQuery({
@@ -21,6 +22,7 @@ const Home = () => {
       <Banner></Banner>
       <PopularClasses classes={classes} />
       <PopularInstructors classes={classes} />
+      <TopInstructor />
     </div>
   );
 };

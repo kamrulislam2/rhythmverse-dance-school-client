@@ -5,7 +5,8 @@ import Swal from "sweetalert2";
 
 const ClassesCard = ({ singleClass }) => {
   const { user } = useContext(AuthContext);
-  const { _id, title, image, instructor, seats, students, price } = singleClass;
+  const { _id, title, image, instructor, seats, students, price, details } =
+    singleClass;
 
   const handleSelect = () => {
     const selectedClass = {
@@ -52,12 +53,18 @@ const ClassesCard = ({ singleClass }) => {
       <div className="card-body ">
         <h2 className="card-title text-2xl font-bold">{title}</h2>
         <p className="text-xl font-medium">
-          Instructor Name: {instructor.name}
+          <span className="font-bold">Instructor Name:</span> {instructor.name}
         </p>
         <p className="text-lg font-medium">
-          Available Seats: {seats - students}
+          <span className="font-bold">Available Seats:</span> {seats - students}
         </p>
-        <p className="text-lg font-medium">Course Fee: ${price}</p>
+        <p className="text-lg font-medium">
+          <span className="font-bold">Course Fee:</span> ${price}
+        </p>
+        <p className="text-lg font-medium">
+          <span className="font-bold">Descriptions:</span>{" "}
+          {details.substring(0, 100)}...
+        </p>
 
         <div className="card-actions justify-end">
           <button

@@ -9,7 +9,6 @@ const useInstructor = () => {
 
   const { data: isInstructor } = useQuery({
     queryKey: ["isInstructor", user?.email],
-    enabled: !!user?.email && !loading,
     enabled:
       !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {

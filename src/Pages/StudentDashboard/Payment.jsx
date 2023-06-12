@@ -16,7 +16,6 @@ const Payment = () => {
 
   const { data: selectedClass = {} } = useQuery({
     queryKey: ["selected", id],
-    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/selected/${id}`);
       return res.data;

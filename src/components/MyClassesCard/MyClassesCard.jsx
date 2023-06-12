@@ -20,7 +20,6 @@ const MyClassesCard = ({ classes, refetch }) => {
   const [axiosSecure] = useAxiosSecure();
 
   const handleDelete = (id) => {
-    console.log(id);
     axiosSecure.delete(`/myClasses/${id}`).then((data) => {
       console.log(data);
       if (data.data.deletedCount > 0) {

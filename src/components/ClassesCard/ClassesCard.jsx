@@ -2,13 +2,25 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const ClassesCard = ({ singleClass }) => {
   const { user } = useContext(AuthContext);
   const { _id, title, image, instructor, seats, students, price, details } =
     singleClass;
+  const navigate = useNavigate();
 
   const handleSelect = () => {
+    if (!user) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Please Login",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/login");
+    }
     const selectedClass = {
       classId: _id,
       instructor: instructor.name,

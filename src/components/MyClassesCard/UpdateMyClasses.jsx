@@ -18,7 +18,6 @@ const UpdateMyClasses = () => {
 
   const { data: myClasses = [], isLoading } = useQuery({
     queryKey: ["classes", user?.email],
-    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/myClasses?email=${user?.email}`);
       return res.data.filter((data) => data._id === id);

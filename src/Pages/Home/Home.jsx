@@ -13,7 +13,6 @@ const Home = () => {
   const { dark, user, loading } = useContext(AuthContext);
   const { data: classes = [] } = useQuery({
     queryKey: ["classes"],
-    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axios.get(
         `${import.meta.env.VITE_api_URL}/classes?limit=${6}`
@@ -21,8 +20,6 @@ const Home = () => {
       return res.data;
     },
   });
-
-  console.log(classes);
 
   return (
     <div data-theme={dark ? "dark" : "light"} className="pt-24">

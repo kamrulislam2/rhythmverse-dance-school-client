@@ -10,7 +10,6 @@ const ManageClasses = () => {
 
   const { data: myClasses = [], refetch } = useQuery({
     queryKey: ["manageClasses", user?.email],
-    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const response1 = axiosSecure.get("/manageClasses");
       const response2 = axiosSecure.get("/updatedClasses");

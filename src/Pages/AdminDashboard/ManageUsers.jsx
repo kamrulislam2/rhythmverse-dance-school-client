@@ -9,13 +9,11 @@ const ManageUsers = () => {
   const { user, loading } = useContext(AuthContext);
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUsers"],
-    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axiosSecure.get("users");
       return res.data;
     },
   });
-  console.log(allUsers);
 
   return (
     <div>

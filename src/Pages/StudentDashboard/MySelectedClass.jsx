@@ -9,7 +9,6 @@ const MySelectedClass = () => {
   const { user, loading } = useContext(AuthContext);
   const { data: selectedClass = [], refetch } = useQuery({
     queryKey: ["selected", user?.email],
-    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/selected?email=${user?.email}`);
       return res.data;

@@ -10,7 +10,6 @@ const Instructors = () => {
   const { user, loading } = useContext(AuthContext);
   const { data: classes = [] } = useQuery({
     queryKey: ["classes"],
-    enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axios.get(`${import.meta.env.VITE_api_URL}/classes`);
       return res.data;

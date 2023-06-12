@@ -8,9 +8,7 @@ const ManageClassesCard = ({ singleClass, index, refetch }) => {
     singleClass;
   const [axiosSecure] = useAxiosSecure();
 
-  console.log(singleClass);
   const handleApprove = (updateClass) => {
-    console.log(updateClass);
     const updateStatus = {
       status: "Approved",
     };
@@ -52,8 +50,8 @@ const ManageClassesCard = ({ singleClass, index, refetch }) => {
         console.log(error);
       });
   };
+
   const handleDeny = (updateClass) => {
-    console.log(updateClass);
     const updateStatus = {
       status: "Denied",
     };

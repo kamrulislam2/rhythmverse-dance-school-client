@@ -61,7 +61,12 @@ const ManageUsersCard = ({ user, refetch, index }) => {
     <tr>
       <th>{index + 1}</th>
       <td>
-        <img className="w-16 h-16 rounded-full" src={image} alt="" />
+        <img
+          referrerPolicy="no-referrer"
+          className="w-16 h-16 rounded-full"
+          src={image}
+          alt=""
+        />
       </td>
       <td>{name}</td>
       <td>{email}</td>
@@ -70,7 +75,7 @@ const ManageUsersCard = ({ user, refetch, index }) => {
         <button
           onClick={() => handleInstructor(_id)}
           className={`hover:scale-110 transition transform hover:underline badge bg-[#FDD8D6] font-bold ${
-            role === "admin" || role === "instructor" ? "btn-disabled" : ""
+            role === "instructor" ? "btn-disabled" : ""
           }`}
         >
           Make Instructor
@@ -80,7 +85,7 @@ const ManageUsersCard = ({ user, refetch, index }) => {
         <button
           onClick={() => handelAdmin(_id)}
           className={`hover:scale-110 transition transform hover:underline badge bg-green-500 font-bold ${
-            role === "admin" || role === "instructor" ? "btn-disabled" : ""
+            role === "admin" ? "btn-disabled" : ""
           }`}
         >
           Make Admin

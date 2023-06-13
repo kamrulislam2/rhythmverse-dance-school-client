@@ -2,13 +2,15 @@ import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MySelectedClassCard = ({ singleClass, index, refetch }) => {
   const { name, image, email, price } = singleClass;
+  const [axiosSecure] = useAxiosSecure();
 
-  const handleDelete = (singleClass) => {
-    axios
-      .delete(`${import.meta.env.VITE_api_URL}/selected/${singleClass?._id}`)
+  const handleDelete = (deleteClass) => {
+    axiosSecure
+      .delete(`/selected/${deleteClass?._id}`)
       .then((data) => {
         if (data.data.deletedCount > 0) {
           Swal.fire({
